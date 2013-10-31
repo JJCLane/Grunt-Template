@@ -7,17 +7,6 @@
 'use strict';
 
 /**
- * Livereload and connect variables
- */
-var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({
-  port: LIVERELOAD_PORT
-});
-var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
-};
-
-/**
  * Grunt module
  */
 module.exports = function (grunt) {
@@ -62,26 +51,6 @@ module.exports = function (grunt) {
               ' * @version <%= pkg.version %>\n' +
               ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n' +
               ' */\n'
-    },
-
-    /**
-     * Connect port/livereload
-     * https://github.com/gruntjs/grunt-contrib-connect
-     * Starts a local webserver and injects
-     * livereload snippet
-     */
-    connect: {
-      options: {
-        port: 9000,
-        hostname: '*'
-      },
-      livereload: {
-        options: {
-          middleware: function (connect) {
-            return [lrSnippet, mountFolder(connect, 'app')];
-          }
-        }
-      }
     },
 
     /**
@@ -154,16 +123,6 @@ module.exports = function (grunt) {
         files: {
           '<%= project.app %>/css/style.min.css': '<%= project.css %>'
         }
-      }
-    },
-
-    /**
-     * Opens the web server in the browser
-     * https://github.com/jsoverson/grunt-open
-     */
-    open: {
-      server: {
-        path: 'http://localhost:<%= connect.options.port %>'
       }
     },
 
