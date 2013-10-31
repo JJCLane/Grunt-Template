@@ -127,6 +127,21 @@ module.exports = function (grunt) {
     },
 
     /**
+     * Syncs files in the browser
+     * https://github.com/shakyShane/grunt-browser-sync
+     * Watching development files and inject into browsers that are connected
+     * Have to add a two javascript files to master template
+     */
+    browser_sync: {
+        files: {
+            src : '<%= project.app %>/css/*.css',
+        },
+        options: {
+           watchTask: true,
+        }
+    },
+
+    /**
      * Runs tasks against changed watched files
      * https://github.com/gruntjs/grunt-contrib-watch
      * Watching development files and run concat/compile tasks
@@ -152,6 +167,7 @@ module.exports = function (grunt) {
     'sass:dev',
     'jshint',
     'concat:dev',
+    'browser_sync',
     'watch'
   ]);
 
