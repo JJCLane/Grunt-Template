@@ -140,17 +140,6 @@ module.exports = function (grunt) {
       sass: {
         files: '<%= project.src %>/scss/{,*/}*.{scss,sass}',
         tasks: ['sass:dev']
-      },
-      livereload: {
-        options: {
-          livereload: LIVERELOAD_PORT
-        },
-        files: [
-          '<%= project.app %>/index.html',
-          '<%= project.app %>/css/*.css',
-          '<%= project.app %>/js/{,*/}*.js',
-          '<%= project.app %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
       }
     }
   });
@@ -163,8 +152,6 @@ module.exports = function (grunt) {
     'sass:dev',
     'jshint',
     'concat:dev',
-    'connect:livereload',
-    'open',
     'watch'
   ]);
 
