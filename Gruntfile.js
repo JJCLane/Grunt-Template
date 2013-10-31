@@ -134,7 +134,10 @@ module.exports = function (grunt) {
      */
     browser_sync: {
         files: {
-            src : '<%= project.app %>/css/*.css',
+            src : [
+              '<%= project.app %>/css/*.css',
+              '<%= project.app %>/js/*.js'
+            ]
         },
         options: {
            watchTask: true,
